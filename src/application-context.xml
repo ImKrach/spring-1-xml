@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="theFortuneService" class="com.krach.coach.services.HappyFortuneServiceImpl">
+	</bean>
+
+	<bean id="theBaseballCoach" class="com.krach.coach.BaseballCoach">
+		<constructor-arg ref="theFortuneService"/>
+	</bean>
+
+	<bean id="theTrackCoach" class="com.krach.coach.TrackCoach">
+		<constructor-arg ref="theFortuneService"/>
+	</bean>
+</beans>
