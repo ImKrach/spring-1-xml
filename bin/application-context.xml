@@ -19,7 +19,7 @@
 		<constructor-arg ref="randomFortune"/>
 	</bean>
 
-	<bean id="theTrackCoach" class="com.krach.coach.TrackCoach">
+	<bean id="theTrackCoach" class="com.krach.coach.TrackCoach" init-method="startMethod" destroy-method="closeMethod">
 		<constructor-arg ref="happyFortune"/>
 		<property name="email" value="${trackcoach.email}" />
 		<property name="team" value="${trackcoach.team}" />

@@ -10,6 +10,15 @@ public class TrackCoach implements Coach {
 
 	public TrackCoach(FortuneService theFortuneService) {
 		this.fortuneService = theFortuneService;
+		System.out.println("TrackCoach.java : On est dans le constructeur");
+	}
+
+	public void startMethod() {
+		System.out.println("TrackCoach.java : On est dans la methode de depart");
+	}
+
+	public void closeMethod() {
+		System.out.println("TrackCoach.java : On est dans la methode de fermeture");
 	}
 
 	@Override
