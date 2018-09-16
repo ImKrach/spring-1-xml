@@ -13,4 +13,8 @@
 	<bean id="theTrackCoach" class="com.krach.coach.TrackCoach">
 		<constructor-arg ref="theFortuneService"/>
 	</bean>
+
+	<bean id="theCricketCoach" class="com.krach.coach.CricketCoach">
+		<property name="fortuneService" ref="theFortuneService"/>
+	</bean>
 </beans>
