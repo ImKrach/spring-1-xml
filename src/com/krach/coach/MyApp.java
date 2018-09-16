@@ -9,14 +9,14 @@ public class MyApp {
 		// Ouverture du contexte de l'application
 		ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("application-context.xml");
 		
-		// Chargement du bean
+		// Chargement du bean (ici on prend un Coach générique : on n'aura donc pas accès aux méthodes spécifiques)
 		Coach coach = appContext.getBean("theBaseballCoach", Coach.class);
 
 		// Chargement d'un autre bean (autre manière de le récupérer)
-		Coach anotherCoach = appContext.getBean(TrackCoach.class);
+		TrackCoach anotherCoach = appContext.getBean(TrackCoach.class);
 
 		// Un dernier coach
-		Coach lastCoach = appContext.getBean(CricketCoach.class);
+		CricketCoach lastCoach = appContext.getBean(CricketCoach.class);
 		
 		// Utilisation des méthodes de notre bean
 		System.out.println(coach.getDailyWorkout());
@@ -28,6 +28,8 @@ public class MyApp {
 		// Utilisation des méthodes de l'autre bean
 		System.out.println(anotherCoach.getDailyWorkout());
 		System.out.println(anotherCoach.getDailyFortune());
+		System.out.println(anotherCoach.getEmail());
+		System.out.println(anotherCoach.getTeam());
 
 		// -----------------------------------------------
 		System.out.println("----------------------------");
@@ -35,6 +37,8 @@ public class MyApp {
 		// Utilisation des méthodes du dernier bean
 		System.out.println(lastCoach.getDailyWorkout());
 		System.out.println(lastCoach.getDailyFortune());
+		System.out.println(lastCoach.getEmail());
+		System.out.println(lastCoach.getTeam());
 		
 		// Fermeture du contexte
 		appContext.close();

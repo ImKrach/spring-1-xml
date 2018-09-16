@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="theFortuneService" class="com.krach.coach.services.HappyFortuneServiceImpl">
-	</bean>
+	<!-- Chargement de properties : contact -->
+	<context:property-placeholder location="classpath:contact.properties" />
 
+	<!-- Nos bean de fortunes -->
+	<bean id="happyFortune" class="com.krach.coach.services.HappyFortuneServiceImpl" />
+	<bean id="randomFortune" class="com.krach.coach.services.RandomFortuneServiceImpl" />
+
+	<!-- Nos coachs -->
 	<bean id="theBaseballCoach" class="com.krach.coach.BaseballCoach">
-		<constructor-arg ref="theFortuneService"/>
+		<constructor-arg ref="randomFortune"/>
 	</bean>
 
 	<bean id="theTrackCoach" class="com.krach.coach.TrackCoach">
-		<constructor-arg ref="theFortuneService"/>
+		<constructor-arg ref="happyFortune"/>
+		<property name="email" value="${trackcoach.email}" />
+		<property name="team" value="${trackcoach.team}" />
 	</bean>
 
 	<bean id="theCricketCoach" class="com.krach.coach.CricketCoach">
-		<property name="fortuneService" ref="theFortuneService"/>
+		<property name="fortuneService" ref="randomFortune"/>
+		<property name="email" value="cricket.coach@gmail.com" />
+		<property name="team" value="La Team Rocket" />
 	</bean>
 </beans>

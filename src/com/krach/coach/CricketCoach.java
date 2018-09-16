@@ -5,6 +5,8 @@ import com.krach.coach.services.FortuneService;
 public class CricketCoach implements Coach {
 
     private FortuneService fortuneService;
+    private String team;
+    private String email;
 
     // Si je n'avais pas créé de no-arg constructor, ni aucun constructor du tout : alors il sera créé automatiquement
     public CricketCoach() {
@@ -26,4 +28,23 @@ public class CricketCoach implements Coach {
         this.fortuneService = theFortuneService;
     }
 
+
+    /**
+     *  Getters and setters
+     */
+    public String getTeam() {
+        return this.team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
